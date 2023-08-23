@@ -1,19 +1,23 @@
 <template>
   <div id="app">
     <div>
-      x:{{ x }} <button @click="x += 10">+</button><button @click="x -= 10">-</button>
+      x:{{ x }} <button @click="x += 10">+</button
+      ><button @click="x -= 10">-</button>
     </div>
     <div>
-      y:{{ y }}<button @click="y += 10">+</button><button @click="y -= 10">-</button>
+      y:{{ y }}<button @click="y += 10">+</button
+      ><button @click="y -= 10">-</button>
     </div>
     <div>
-      w:{{ w }}<button @click="w += 10">+</button><button @click="w -= 10">-</button>
+      w:{{ w }}<button @click="w += 10">+</button
+      ><button @click="w -= 10">-</button>
     </div>
     <div>
-      h: {{ h }}<button @click="h += 10">+</button><button @click="h -= 10">-</button>
+      h: {{ h }}<button @click="h += 10">+</button
+      ><button @click="h -= 10">-</button>
     </div>
     <div>active:{{ active }}<br /></div>
-    <div class="parent">
+    <div class="parent" style="transform: scale(0.5);">
       <Vue3DraggableResizable
         :initW="40"
         :initH="80"
@@ -29,7 +33,8 @@
         :disabledW="false"
         :disabledH="false"
         :disabledY="false"
-        :lockAspectRatio="true"
+        :lockAspectRatio="false"
+        :parentScale="0.5"
         classNameHandle="my-handle"
         @activated="print('activated')"
         @deactivated="print('deactivated')"
