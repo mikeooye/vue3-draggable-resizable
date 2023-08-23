@@ -43,31 +43,31 @@ Register the Vue3DraggableResizable
 
 ```js
 // >main.js
-import { createApp } from 'vue'
-import App from './App.vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import { createApp } from "vue";
+import App from "./App.vue";
+import Vue3DraggableResizable from "vue3-draggable-resizable";
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import "vue3-draggable-resizable/dist/Vue3DraggableResizable.css";
 
 // You will have a global component named "Vue3DraggableResizable"
 createApp(App)
   .use(Vue3DraggableResizable)
-  .mount('#app')
+  .mount("#app");
 ```
 
 You can also use it separately within the component
 
 ```js
 // >component.js
-import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import { defineComponent } from "vue";
+import Vue3DraggableResizable from "vue3-draggable-resizable";
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import "vue3-draggable-resizable/dist/Vue3DraggableResizable.css";
 
 export default defineComponent({
-  components: { Vue3DraggableResizable }
+  components: { Vue3DraggableResizable },
   // ...other
-})
+});
 ```
 
 Here is a complete example of using "vue-template"
@@ -86,6 +86,7 @@ Here is a complete example of using "vue-template"
         v-model:active="active"
         :draggable="true"
         :resizable="true"
+        :parent-scale="scale"
         @activated="print('activated')"
         @deactivated="print('deactivated')"
         @drag-start="print('drag-start')"
@@ -102,10 +103,10 @@ Here is a complete example of using "vue-template"
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import { defineComponent } from "vue";
+import Vue3DraggableResizable from "vue3-draggable-resizable";
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import "vue3-draggable-resizable/dist/Vue3DraggableResizable.css";
 export default defineComponent({
   components: { Vue3DraggableResizable },
   data() {
@@ -114,15 +115,16 @@ export default defineComponent({
       y: 100,
       h: 100,
       w: 100,
-      active: false
-    }
+      active: false,
+      scale: 1,
+    };
   },
   methods: {
     print(val) {
-      console.log(val)
-    }
-  }
-})
+      console.log(val);
+    },
+  },
+});
 </script>
 <style>
 .parent {
@@ -331,6 +333,17 @@ Restrict movement and size within its parent node
 <Vue3DraggableResizable :parent="true" />
 ```
 
+#### parentScale
+
+type: `Number`<br>
+default: `1`<br>
+
+The scaling of the translation distance, when the parent component uses transform:scale, this property needs to be set.
+
+```html
+<Vue3DraggableResizable :parent-scale="1" />
+```
+
 #### handles
 
 type: `Array`<br>
@@ -517,16 +530,16 @@ This can be used as follows.
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
+import { defineComponent } from "vue";
+import Vue3DraggableResizable from "vue3-draggable-resizable";
 // This component is not exported by default
 // If you used "app.use(Vue3DraggableResizable)"，then you don't need to import it, you can use it directly.
-import { DraggableContainer } from 'vue3-draggable-resizable'
+import { DraggableContainer } from "vue3-draggable-resizable";
 //default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import "vue3-draggable-resizable/dist/Vue3DraggableResizable.css";
 export default defineComponent({
-  components: { Vue3DraggableResizable, DraggableContainer }
-})
+  components: { Vue3DraggableResizable, DraggableContainer },
+});
 </script>
 <style>
 .parent {
